@@ -43,16 +43,16 @@ This workflow is implemented using simple rule-based logic with no machine learn
 
 Project Structure
 
-mini-workflow-engine/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py                  (FastAPI application entry point)
-│   ├── engine.py                (Workflow engine and execution logic)
-│   └── workflows_code_review.py (Example Code Review workflow)
-│
-├── .gitignore
-└── README.md
+mini-workflow-engine/  
+│  
+├── app/  
+│   ├── __init__.py  
+│   ├── main.py                  (FastAPI application entry point)  
+│   ├── engine.py                (Workflow engine and execution logic)  
+│   └── workflows_code_review.py (Example Code Review workflow)  
+│  
+├── .gitignore  
+└── README.md  
 
 ==================================================
 
@@ -98,35 +98,3 @@ Sample Workflow Execution Input
     "quality_threshold": 7
   }
 }
-
-The output includes:
-
-Final state
-
-Quality score
-
-Suggestions
-
-Full execution log
-
-==================================================
-
-Future Improvements
-
-Persistent database storage (Postgres / SQLite)
-
-Authentication and multi-user support
-
-Retry logic and failure recovery
-
-Advanced workflow visualization UI
-
-More example workflows
-
-Unit testing and CI/CD integration
-
-==================================================
-
-Author
-
-Your Name
