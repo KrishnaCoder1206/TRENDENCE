@@ -1,47 +1,41 @@
-Mini Agent Workflow Engine – Backend Assignment
+# Mini Agent Workflow Engine – Backend Assignment
 
-This project implements a minimal workflow and graph execution engine using Python and FastAPI.  
-It was developed as part of an AI Engineering Internship assignment to demonstrate backend design, workflow orchestration, and clean code structure.
+This project implements a minimal workflow and graph execution engine using Python and FastAPI. It was developed as part of an AI Engineering Internship assignment to demonstrate backend design, workflow orchestration, async execution, and clean code structure. The system allows defining nodes as Python functions, connecting them using edges, maintaining a shared state, and executing workflows end-to-end through REST APIs and WebSockets.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Key Features
 
-==================================================
+Workflow Engine  
+- Nodes implemented as Python functions (tools)  
+- Shared mutable dictionary-based state  
+- Directed edges between nodes  
+- Conditional branching based on state values  
+- State-driven looping until a condition is satisfied  
+- Step-by-step execution logs for every run  
 
-Features
+Tool Registry  
+- Tools registered dynamically  
+- Nodes invoke tools during execution  
+- Supports both sync and async functions  
 
-Workflow Engine
-- Supports nodes (steps) connected through edges
-- Shared state is passed between nodes
-- Conditional branching based on state values
-- Looping until a condition is satisfied
-- Execution logs maintained for each run
+FastAPI APIs  
+- POST /graph/create – Create a workflow  
+- POST /graph/run – Execute workflow synchronously  
+- POST /graph/run_async – Execute workflow in background  
+- GET /graph/state/{run_id} – Fetch current workflow state  
+- WebSocket /ws/run/{run_id} – Stream live execution logs  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Example Workflow Included – Code Review Mini-Agent
 
-Tool Registry
-- Tools are simple Python functions
-- Nodes can call tools during execution
-- Tools are registered dynamically
+Workflow Steps  
+1. Extract functions from code  
+2. Check complexity  
+3. Detect basic issues  
+4. Suggest improvements  
+5. Loop until quality_score >= threshold  
 
-FastAPI Endpoints
-- POST /graph/create : Create a workflow
-- POST /graph/run : Execute workflow (synchronous)
-- POST /graph/run_async : Execute workflow in background
-- GET /graph/state/{run_id} : Get current workflow state
-- WebSocket /ws/run/{run_id} : Stream live execution logs
-
-==================================================
-
-Example Workflow Included: Code Review Mini-Agent
-
-Workflow Steps:
-1. Extract functions from code
-2. Check complexity
-3. Detect basic issues
-4. Suggest improvements
-5. Loop until quality_score >= threshold
-
-This workflow is implemented using simple rule-based logic with no machine learning.
-
-==================================================
-
-Project Structure
+This workflow is fully rule-based and does not use any machine learning.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Project Structure
 
 mini-workflow-engine/  
 │  
@@ -51,44 +45,37 @@ mini-workflow-engine/
 │   ├── engine.py                (Workflow engine and execution logic)  
 │   └── workflows_code_review.py (Example Code Review workflow)  
 │  
+├── requirements.txt  
 ├── .gitignore  
 └── README.md  
 
-==================================================
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Installation
 
-Installation
+Step 1: Create a virtual environment  
+python -m venv venv  
 
-1. Create a virtual environment
+Step 2: Activate the virtual environment  
 
-python -m venv venv
+For Windows  
+venv\Scripts\activate  
 
-2. Activate the virtual environment
+For Mac/Linux  
+source venv/bin/activate  
 
-For Windows:
-venv\Scripts\activate
+Step 3: Install dependencies  
+pip install -r requirements.txt  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Run the Application
 
-For Mac/Linux:
-source venv/bin/activate
+Start the FastAPI server using:  
+uvicorn app.main:app --reload  
 
-3. Install dependencies
+Open API documentation in your browser at:  
+http://127.0.0.1:8000/docs  
 
-pip install fastapi uvicorn pydantic
-
-==================================================
-
-Run the Application
-
-Use the following command to start the FastAPI server:
-
-uvicorn app.main:app --reload
-
-Open API documentation in browser:
-
-http://127.0.0.1:8000/docs
-
-==================================================
-
-Sample Workflow Execution Input
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Sample Workflow Execution Input
 
 ```json
 {
